@@ -1,0 +1,15 @@
+full-build *default:
+
+  build:
+    target: Vostok.Instrumentation.AspNetCore.sln
+    configuration: Release
+    tool:
+      name: dotnet
+
+  install:
+    - Vostok.Instrumentation.AspNetCore/bin/Release/netstandard2.0/Vostok.Instrumentation.AspNetCore.dll
+
+  deps:
+    - vostok.hosting.core
+    - vostok.airlock.client
+    - vostok.core
