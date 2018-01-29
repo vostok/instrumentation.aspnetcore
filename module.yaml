@@ -8,6 +8,13 @@ full-build *default:
 
   install:
     - Vostok.Instrumentation.AspNetCore/bin/Release/netstandard2.0/Vostok.Instrumentation.AspNetCore.dll
+    - nuget Microsoft.AspNetCore.Hosting/2.0.0
+    - nuget Microsoft.AspNetCore.Hosting.Abstractions/2.0.0
+    - nuget Microsoft.AspNetCore.Http.Extensions/2.0.0
+    - nuget Microsoft.Extensions.Configuration/2.0.0
+    - module vostok.hosting.core
+    - module vostok.airlock.client
+    - module vostok.core
 
   deps:
     - vostok.hosting.core
