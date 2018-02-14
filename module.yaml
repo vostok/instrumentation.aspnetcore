@@ -14,9 +14,13 @@ full-build *default:
     - nuget Microsoft.Extensions.Configuration/2.0.0
     - module vostok.hosting.core
     - module vostok.airlock.client
+    - module vostok.clusterclient.transport.http
     - module vostok.core
 
   deps:
+    - vostok.clusterclient
+    - force: $CURRENT_BRANCH
     - vostok.hosting.core
     - vostok.airlock.client
     - vostok.core
+    - vostok.clusterclient.transport.http
