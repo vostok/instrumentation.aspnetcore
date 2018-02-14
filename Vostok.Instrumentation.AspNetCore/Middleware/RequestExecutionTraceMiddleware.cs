@@ -48,7 +48,7 @@ namespace Vostok.Instrumentation.AspNetCore.Middleware
                 }
                 catch
                 {
-                    spanBuilder.SetAnnotation(TracingAnnotationNames.HttpCode, HttpStatusCode.InternalServerError);
+                    spanBuilder.SetAnnotation(TracingAnnotationNames.HttpCode, (int)HttpStatusCode.InternalServerError);
                     throw;
                 }
             }
