@@ -3,20 +3,20 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Vostok.Commons;
-using Vostok.Commons.Extensions.Uri;
-using Vostok.Hosting;
-using Vostok.Tracing;
+using Vstk.Commons;
+using Vstk.Commons.Extensions.Uri;
+using Vstk.Hosting;
+using Vstk.Tracing;
 
-namespace Vostok.Instrumentation.AspNetCore.Middleware
+namespace Vstk.Instrumentation.AspNetCore.Middleware
 {
     public class RequestExecutionTraceMiddleware
     {
         private readonly RequestDelegate next;
         private readonly string serviceName;
 
-        public RequestExecutionTraceMiddleware(RequestDelegate next, IVostokHostingEnvironment vostokHostingEnvironment)
-            : this(next, vostokHostingEnvironment.Service)
+        public RequestExecutionTraceMiddleware(RequestDelegate next, IVostokHostingEnvironment vstkHostingEnvironment)
+            : this(next, vstkHostingEnvironment.Service)
         {
         }
 

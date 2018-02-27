@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Vostok.Hosting;
+using Vstk.Hosting;
 
-namespace Vostok.Instrumentation.AspNetCore
+namespace Vstk.Instrumentation.AspNetCore
 {
     public abstract class AspNetCoreVostokApplication : IVostokApplication
     {

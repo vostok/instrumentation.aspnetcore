@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Primitives;
 
-namespace Vostok.Instrumentation.AspNetCore
+namespace Vstk.Instrumentation.AspNetCore
 {
     internal class VostokConfigurationProvider : IConfigurationProvider
     {
