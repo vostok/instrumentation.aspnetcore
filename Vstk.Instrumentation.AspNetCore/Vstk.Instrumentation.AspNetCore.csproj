@@ -2,12 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <AssemblyName>Vstk.Instrumentation.AspNetCore</AssemblyName>
     <RootNamespace>Vstk.Instrumentation.AspNetCore</RootNamespace>
-    <Authors>Vstk team</Authors>
+    <Authors>Vostok team</Authors>
     <Company>SKB Kontur</Company>
-    <Product>Vstk</Product>
+    <Product>Vostok</Product>
+    <Copyright>Copyright © SKB Kontur 2017-2018</Copyright>
+    <PackageProjectUrl>https://github.com/vostok/vstk.instrumentation.aspnetcore</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/vostok/vstk.instrumentation.aspnetcore/blob/master/LICENSE</PackageLicenseUrl>
+    <Description>Middleware for ASP.NET Core and vostok microservices toolkit</Description>
   </PropertyGroup>
 
   <ItemGroup>
