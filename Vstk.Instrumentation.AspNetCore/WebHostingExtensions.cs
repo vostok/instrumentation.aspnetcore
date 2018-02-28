@@ -9,7 +9,7 @@ namespace Vstk.Instrumentation.AspNetCore
 {
     public static class WebHostingExtensions
     {
-        public static IWebHostBuilder AddVstkServices(this IWebHostBuilder webHostBuilder, IVostokHostingEnvironment vstkHostingEnvironment = null)
+        public static IWebHostBuilder AddVostokServices(this IWebHostBuilder webHostBuilder, IVostokHostingEnvironment vstkHostingEnvironment = null)
         {
             vstkHostingEnvironment = vstkHostingEnvironment ?? VostokHostingEnvironment.Current;
             if (vstkHostingEnvironment == null)
