@@ -9,23 +9,23 @@ namespace Vstk.Instrumentation.AspNetCore
 {
     public static class WebHostingExtensions
     {
-        public static IWebHostBuilder AddVostokServices(this IWebHostBuilder webHostBuilder, IVostokHostingEnvironment vstkHostingEnvironment = null)
+        public static IWebHostBuilder AddVostokServices(this IWebHostBuilder webHostBuilder, IVostokHostingEnvironment vostokHostingEnvironment = null)
         {
-            vstkHostingEnvironment = vstkHostingEnvironment ?? VostokHostingEnvironment.Current;
-            if (vstkHostingEnvironment == null)
+            vostokHostingEnvironment = vostokHostingEnvironment ?? VostokHostingEnvironment.Current;
+            if (vostokHostingEnvironment == null)
                 throw new InvalidOperationException($"{nameof(VostokHostingEnvironment)} is not defined");
-            webHostBuilder.UseSetting(WebHostDefaults.EnvironmentKey, TranslateEnvironmentName(vstkHostingEnvironment));
-            webHostBuilder.ConfigureAppConfiguration((context, builder) => builder.Add(new VostokConfigurationSource(vstkHostingEnvironment)));
+            webHostBuilder.UseSetting(WebHostDefaults.EnvironmentKey, TranslateEnvironmentName(vostokHostingEnvironment));
+            webHostBuilder.ConfigureAppConfiguration((context, builder) => builder.Add(new VostokConfigurationSource(vostokHostingEnvironment)));
             return webHostBuilder.ConfigureServices(
                 (webHostBuilderContext, services) =>
                 {
-                    services.AddSingleton(vstkHostingEnvironment);
-                    services.AddSingleton(vstkHostingEnvironment.AirlockClient);
-                    services.AddSingleton(vstkHostingEnvironment.MetricScope);
+                    services.AddSingleton(vostokHostingEnvironment);
+                    services.AddSingleton(vostokHostingEnvironment.AirlockClient);
+                    services.AddSingleton(vostokHostingEnvironment.MetricScope);
                 });
         }
 
-        public static IApplicationBuilder UseVstk(this IApplicationBuilder app)
+        public static IApplicationBuilder UseVostok(this IApplicationBuilder app)
         {
             return app
                 .UseMiddleware<RequestExecutionDistributedContextMiddleware>()
@@ -33,15 +33,15 @@ namespace Vstk.Instrumentation.AspNetCore
                 .UseMiddleware<RequestExecutionTimeMiddleware>();
         }
 
-        private static string TranslateEnvironmentName(IVostokHostingEnvironment vstkHostingEnvironment)
+        private static string TranslateEnvironmentName(IVostokHostingEnvironment vostokHostingEnvironment)
         {
-            if (vstkHostingEnvironment.IsProduction())
+            if (vostokHostingEnvironment.IsProduction())
                 return EnvironmentName.Production;
-            if (vstkHostingEnvironment.IsDevelopment())
+            if (vostokHostingEnvironment.IsDevelopment())
                 return EnvironmentName.Development;
-            if (vstkHostingEnvironment.IsStaging())
+            if (vostokHostingEnvironment.IsStaging())
                 return EnvironmentName.Staging;
-            return vstkHostingEnvironment.Environment;
+            return vostokHostingEnvironment.Environment;
         }
     }
 }

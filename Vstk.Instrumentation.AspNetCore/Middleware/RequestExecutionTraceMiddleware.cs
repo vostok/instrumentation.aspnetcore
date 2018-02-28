@@ -15,8 +15,8 @@ namespace Vstk.Instrumentation.AspNetCore.Middleware
         private readonly RequestDelegate next;
         private readonly string serviceName;
 
-        public RequestExecutionTraceMiddleware(RequestDelegate next, IVostokHostingEnvironment vstkHostingEnvironment)
-            : this(next, vstkHostingEnvironment.Service)
+        public RequestExecutionTraceMiddleware(RequestDelegate next, IVostokHostingEnvironment vostokHostingEnvironment)
+            : this(next, vostokHostingEnvironment.Service)
         {
         }
 

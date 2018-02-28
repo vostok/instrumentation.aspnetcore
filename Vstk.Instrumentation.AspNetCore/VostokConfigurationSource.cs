@@ -6,16 +6,16 @@ namespace Vstk.Instrumentation.AspNetCore
 {
     internal class VostokConfigurationSource : IConfigurationSource
     {
-        private readonly IVostokHostingEnvironment vstkHostingEnvironment;
+        private readonly IVostokHostingEnvironment vostokHostingEnvironment;
 
-        public VostokConfigurationSource(IVostokHostingEnvironment vstkHostingEnvironment)
+        public VostokConfigurationSource(IVostokHostingEnvironment vostokHostingEnvironment)
         {
-            this.vstkHostingEnvironment = vstkHostingEnvironment ?? throw new ArgumentNullException(nameof(vstkHostingEnvironment));
+            this.vostokHostingEnvironment = vostokHostingEnvironment ?? throw new ArgumentNullException(nameof(vostokHostingEnvironment));
         }
 
         public IConfigurationProvider Build(IConfigurationBuilder builder)
         {
-            return new VostokConfigurationProvider(vstkHostingEnvironment.Configuration);
+            return new VostokConfigurationProvider(vostokHostingEnvironment.Configuration);
         }
     }
 }
