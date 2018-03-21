@@ -1,8 +1,8 @@
 using System;
 using Microsoft.Extensions.Configuration;
-using Vstk.Hosting;
+using Vostok.Hosting;
 
-namespace Vstk.Instrumentation.AspNetCore
+namespace Vostok.Instrumentation.AspNetCore
 {
     internal class VostokConfigurationSource : IConfigurationSource
     {

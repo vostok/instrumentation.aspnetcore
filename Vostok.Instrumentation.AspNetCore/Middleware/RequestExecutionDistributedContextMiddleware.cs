@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Vstk.Flow;
+using Vostok.Flow;
 
-namespace Vstk.Instrumentation.AspNetCore.Middleware
+namespace Vostok.Instrumentation.AspNetCore.Middleware
 {
     public class RequestExecutionDistributedContextMiddleware
     {

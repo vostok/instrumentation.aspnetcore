@@ -2,10 +2,10 @@ using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Vstk.Hosting;
-using Vstk.Instrumentation.AspNetCore.Middleware;
+using Vostok.Hosting;
+using Vostok.Instrumentation.AspNetCore.Middleware;
 
-namespace Vstk.Instrumentation.AspNetCore
+namespace Vostok.Instrumentation.AspNetCore
 {
     public static class WebHostingExtensions
     {

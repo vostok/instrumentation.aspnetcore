@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace Vstk.Instrumentation.AspNetCore.Middleware
+namespace Vostok.Instrumentation.AspNetCore.Middleware
 {
     public class RequestExecutionTimeMiddleware
     {

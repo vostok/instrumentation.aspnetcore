@@ -3,12 +3,12 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
-using Vstk.Commons;
-using Vstk.Commons.Extensions.Uri;
-using Vstk.Hosting;
-using Vstk.Tracing;
+using Vostok.Commons;
+using Vostok.Commons.Extensions.Uri;
+using Vostok.Hosting;
+using Vostok.Tracing;
 
-namespace Vstk.Instrumentation.AspNetCore.Middleware
+namespace Vostok.Instrumentation.AspNetCore.Middleware
 {
     public class RequestExecutionTraceMiddleware
     {
