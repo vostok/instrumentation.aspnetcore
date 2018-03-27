@@ -23,7 +23,8 @@ namespace Vostok.Instrumentation.AspNetCore
                     services =>
                     {
                         services.AddSingleton(vostokHostingEnvironment);
-                        services.AddSingleton(vostokHostingEnvironment.AirlockClient);
+                        if (vostokHostingEnvironment.AirlockClient != null)
+                            services.AddSingleton(vostokHostingEnvironment.AirlockClient);
                         services.AddSingleton(vostokHostingEnvironment.MetricScope);
                         if (vostokHostingEnvironment.Log != null)
                             services.AddSingleton(vostokHostingEnvironment.Log);
