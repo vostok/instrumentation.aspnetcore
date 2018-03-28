@@ -45,6 +45,7 @@ namespace Vostok.Instrumentation.AspNetCore.Middleware
             }
             catch (Exception e)
             {
+                logger.LogInformation("Got into the exception catch clause");
                 context.Response.StatusCode = 500;
                 // todo (spaceorc, 15.12.2017) не выбрасывать исключение дальше - возвращать 500
                 logger.LogError(
