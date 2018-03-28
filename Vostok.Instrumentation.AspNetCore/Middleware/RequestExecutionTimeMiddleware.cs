@@ -45,18 +45,19 @@ namespace Vostok.Instrumentation.AspNetCore.Middleware
             }
             catch (Exception e)
             {
+                context.Response.StatusCode = 500;
                 // todo (spaceorc, 15.12.2017) не выбрасывать исключение дальше - возвращать 500
                 logger.LogError(
                     e,
-                    "Request {Method} {Scheme}://{Host}{PathBase}{Path}{QueryString} failed after {ElapsedMs} ms",
+                    "Request {Method} {Scheme}://{Host}{PathBase}{Path}{QueryString} failed with {StatusCode} after {ElapsedMs} ms",
                     context.Request.Method,
                     context.Request.Scheme,
                     context.Request.Host.Value,
                     context.Request.PathBase.Value,
                     context.Request.Path.Value,
                     context.Request.QueryString.Value,
+                    context.Response.StatusCode,
                     stopwatch.ElapsedMilliseconds);
-                context.Response.StatusCode = 500;
             }
         }
     }
