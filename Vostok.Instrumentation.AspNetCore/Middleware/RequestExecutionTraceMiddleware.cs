@@ -49,7 +49,7 @@ namespace Vostok.Instrumentation.AspNetCore.Middleware
                 catch
                 {
                     spanBuilder.SetAnnotation(TracingAnnotationNames.HttpCode, (int)HttpStatusCode.InternalServerError);
-                    throw;
+                    context.Response.StatusCode = 500;
                 }
             }
         }

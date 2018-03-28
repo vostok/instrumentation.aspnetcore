@@ -56,7 +56,7 @@ namespace Vostok.Instrumentation.AspNetCore.Middleware
                     context.Request.Path.Value,
                     context.Request.QueryString.Value,
                     stopwatch.ElapsedMilliseconds);
-                throw;
+                context.Response.StatusCode = 500;
             }
         }
     }
