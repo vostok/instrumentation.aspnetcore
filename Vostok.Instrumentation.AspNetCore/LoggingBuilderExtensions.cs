@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Vostok.Logging;
 using LogLevel = Vostok.Logging.LogLevel;
@@ -45,8 +46,23 @@ namespace Vostok.Instrumentation.AspNetCore
                 if (!TranslateLogLevel(logLevel, out var vostokLogLevel) || !log.IsEnabledFor(vostokLogLevel))
                     return;
 
-                // TODO (spaceorc, 14.02.2018): steal implementation from SerilogLogger
-                log.Log(new LogEvent(vostokLogLevel, exception, formatter(state, exception), Array.Empty<object>()));
+                var messageTemplate = formatter != null 
+                    ? formatter(state, exception) 
+                    : ReferenceEquals(state, null)
+                        ? typeof(TState).FullName
+                        : Convert.ToString(state);
+
+                var logEvent = new LogEvent(vostokLogLevel, exception, messageTemplate, Array.Empty<object>());
+                if (state is IEnumerable<KeyValuePair<string, object>> kvps)
+                {
+                    foreach (var kvp in kvps)
+                    {
+                        if (kvp.Key == "{OriginalFormat}")
+                            continue;
+                        logEvent.AddPropertyIfAbsent(kvp.Key, kvp.Value);
+                    }
+                }
+                log.Log(logEvent);
             }
 
             public bool IsEnabled(Microsoft.Extensions.Logging.LogLevel logLevel)
